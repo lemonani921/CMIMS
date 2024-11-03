@@ -1,5 +1,5 @@
 
-# Documentation
+# HOG-SVM Documentation
 
 ## Import Dataset
 ```
