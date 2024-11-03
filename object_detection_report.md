@@ -12,15 +12,26 @@ version = project.version(2)
 dataset = version.download("yolov5")
 ```
 
+## Import Necessary Libraries
+```
+!pip install roboflow scikit-image opencv-python-headless
+
+# Import necessary libraries
+from roboflow import Roboflow
+from skimage.feature import hog
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
+import cv2
+import numpy as np
+import os
+import glob
+
+```
 
 ## Data Preparation
 The dataset was prepared by resizing images, normalizing pixel values, and loading bounding box annotations for object detection.
 
 ```python
-from skimage.feature import hog
-import cv2
-import numpy as np
-
 hog_params = {'orientations': 9, 'pixels_per_cell': (8, 8), 'cells_per_block': (2, 2), 'block_norm': 'L2'}
 window_size = (64, 64)  # HOG window size
 
@@ -37,8 +48,6 @@ def load_annotations(annotations_path, img_path):
 For object detection, we used the HOG (Histogram of Oriented Gradients) for feature extraction, combined with an SVM (Support Vector Machine) classifier for object classification.
 
 ```python
-from sklearn.svm import SVC
-
 svm_clf = SVC(kernel='linear', probability=True)
 svm_clf.fit(X_train, y_train)
 ```
@@ -67,9 +76,12 @@ X_train, y_train = prepare_data("/content/dataset")
 The model’s performance was evaluated on a test set to assess detection capabilities, particularly focusing on edge cases where the model may struggle.
 
 ```python
-from sklearn.metrics import accuracy_score
 
 y_pred = svm_clf.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Model Accuracy: {accuracy * 100:.2f}%")
 ```
+
+## Results 
+
+
