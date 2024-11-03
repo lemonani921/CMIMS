@@ -84,4 +84,9 @@ print(f"Model Accuracy: {accuracy * 100:.2f}%")
 
 ## Results 
 
+![hog-result1](https://github.com/user-attachments/assets/75c14c36-269d-451b-9b1a-bb63b2c7e6fe)
+![hog-result2](https://github.com/user-attachments/assets/d86c15ee-4c30-42e5-a7f4-1f6f63154dc1)
+![hog-result3](https://github.com/user-attachments/assets/ca82a084-be24-43b6-9f96-470fb3049897)
+
+
 
